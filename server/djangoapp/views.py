@@ -1,12 +1,12 @@
 # Uncomment the required imports before adding the code
 
-# from django.shortcuts import render
-# from django.http import HttpResponseRedirect, HttpResponse
-# from django.contrib.auth.models import User
-# from django.shortcuts import get_object_or_404, render, redirect
-# from django.contrib.auth import logout
-# from django.contrib import messages
-# from datetime import datetime
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import logout
+from django.contrib import messages
+from datetime import datetime
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -38,8 +38,18 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
-# Create a `logout_request` view to handle sign out request
-# def logout_request(request):
+# Create a `logout_request` view to handle sign out request:
+def logout_view(request):
+    """Logs out the user and returns a JSON response with the username."""
+
+    if request.user.is_authenticated:
+        logout(request)
+        username = request.user.username  # Access username after logout for security
+        data = {"username": username}
+        return JsonResponse(data)
+    else:
+        # Handle case where user is not authenticated
+        return JsonResponse({"message": "User is not currently logged in."})
 # ...
 
 # Create a `registration` view to handle sign up request
