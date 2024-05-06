@@ -1,6 +1,6 @@
 import React from 'react';
-import "../assets/style.css";
 import "../assets/bootstrap.min.css";
+import "../assets/style.css";
 
 const Header = () => {
   const logout = async (e) => {
@@ -22,17 +22,14 @@ const Header = () => {
   };
 
   let homepageItems = <div></div>;
+  let home_page_items =  <div></div>
   let currUser = sessionStorage.getItem('username');
 
   if (currUser !== null && currUser !== "") {
-    homepageItems = (
-      <div className="d-flex align-items-center">
-        <span className="homepage_links me-3">{sessionStorage.getItem("username")}</span>
-        <a className="btn btn-outline-light me-3" href="#" onClick={logout}>
-          Logout
-        </a>
-      </div>
-    );
+    home_page_items = <div className="input_panel">
+      <text className='username'>{sessionStorage.getItem("username")}</text>
+      <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
+    </div>
   } else {
     homepageItems = (
       <div className="d-flex align-items-center">
@@ -61,24 +58,31 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">Home</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about">About Us</a>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact Us</a>
+              <li class="nav-item">
+                <a class="nav-link " href="/contact">Contact Us</a>
               </li>
             </ul>
-            <div className="d-flex">
-              <div className="loginlink" id="loginlogout">
-                {homepageItems}
-              </div>
-            </div>
+            
           </div>
+          <span class="navbar-text">
+                  <div class="loginlink" id="loginlogout">
+                  {home_page_items}
+                  </div>
+          </span>
+          <div className="d-flex">
+                <div className="loginlink" id="loginlogout">
+                {homepageItems}
+                </div>
+          </div>
+        
         </div>
       </nav>
     </div>
