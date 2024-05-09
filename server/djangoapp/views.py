@@ -1,5 +1,4 @@
 # Uncomment the required imports before adding the code
-
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -59,7 +58,6 @@ def registration(request):
         username_exist = True
     except Exception as e:
         logger.debug(f"{username} is new user. Error: {e}")
-
 
     if not username_exist:
         user = User.objects.create_user(username=username, first_name=first_name, 
