@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
 def login_user(request):
@@ -44,7 +45,7 @@ def logout_view(request):
 # Create a `registration` view to handle sign up request
 @csrf_exempt
 def registration(request):
-    context = {}
+    #context = {}
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
@@ -52,14 +53,17 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
-    email_exist = False
+    #email_exist = False
     try:
         User.objects.get(username=username)
         username_exist = True
-    except:
-        logger.debug("{} is new user".format(username))
+    except Exception as e:
+        logger.debug(f"{username} is new user. Error: {e}")
+
+
     if not username_exist:
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password, email=email)
+        user = User.objects.create_user(username=username, first_name=first_name, 
+        last_name=last_name, password=password, email=email)
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
         return JsonResponse(data)
@@ -76,7 +80,8 @@ def get_cars(request):
     car_models = CarModel.objects.select_related('car_make')
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+        cars.append({"CarModel": car_model.name, 
+        "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
 
 
@@ -131,10 +136,11 @@ def add_review(request):
     if not request.user.is_anonymous:
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+            #response = post_review(data)
             return JsonResponse({"status": 200})
-        except:
+        except Exception as e:
+            print(f"Error in posting review: {e}")
             return JsonResponse({"status": 401, "message": "Error in posting review"})
+
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
-
