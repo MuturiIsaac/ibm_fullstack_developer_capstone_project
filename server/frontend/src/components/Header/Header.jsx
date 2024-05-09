@@ -21,23 +21,17 @@ const Header = () => {
     }
   };
 
-  let homepageItems = <div></div>;
+  
   let home_page_items =  <div></div>
   let currUser = sessionStorage.getItem('username');
 
   if (currUser !== null && currUser !== "") {
     home_page_items = <div className="input_panel">
-      <text className='username'>{sessionStorage.getItem("username")}</text>
+      <span className='username'>{sessionStorage.getItem("username")}</span>
       <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
     </div>
-  } else {
-    homepageItems = (
-      <div className="d-flex align-items-center">
-        <a className="btn btn-outline-light me-3" href="/login">Login</a>
-        <a className="btn btn-outline-light d-none d-md-inline-block" href="/register">Register</a>
-      </div>
-    );
-  }
+  } 
+    
 
   return (
     <div>
@@ -58,31 +52,24 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">Home</a>
+          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul className="navbar-nav navitems">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/about">About Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/contact">Contact Us</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/contact">Contact Us</a>
               </li>
             </ul>
-            
           </div>
-          <span class="navbar-text">
-                  <div class="loginlink" id="loginlogout">
-                  {home_page_items}
-                  </div>
+          <span className="navbar-text">
+            <div className="loginlink" id="loginlogout">
+              {home_page_items}
+            </div>
           </span>
-          <div className="d-flex">
-                <div className="loginlink" id="loginlogout">
-                {homepageItems}
-                </div>
-          </div>
-        
         </div>
       </nav>
     </div>
