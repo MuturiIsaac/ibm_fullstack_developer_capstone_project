@@ -1,20 +1,21 @@
 /*jshint esversion: 8 */
+
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const { Schema, model } = mongoose;
 
-const reviews = new Schema({
-	id: {
+const reviewsSchema = new Schema({
+  id: {
     type: Number,
-    required: true,
-	},
-	name: {
+    required: true
+  },
+  name: {
     type: String,
     required: true
   },
   dealership: {
     type: Number,
-    required: true,
+    required: true
   },
   review: {
     type: String,
@@ -39,7 +40,7 @@ const reviews = new Schema({
   car_year: {
     type: Number,
     required: true
-  },
+  }
 });
 
-module.exports = mongoose.model('reviews', reviews);
+module.exports = model('reviews', reviewsSchema);
