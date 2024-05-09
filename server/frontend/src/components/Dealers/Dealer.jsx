@@ -32,6 +32,7 @@ const Dealer = () => {
     if (retobj.status === 200) {
       let dealerobjs = Array.from(retobj.dealer)
       setDealer(dealerobjs[0])
+      console.log("Dealer object received from server:", dealerobjs[0]);
     }
   }
 
@@ -55,7 +56,18 @@ const Dealer = () => {
     let icon = sentiment === "positive" ? positive_icon : sentiment === "negative" ? negative_icon : neutral_icon;
     return icon;
   }
+  useEffect(() => {
+    const fetchDealer = async () => {
+      const res = await fetch(dealer_url, { method: "GET" });
+      const retobj = await res.json();
+      if (retobj.status === 200) {
+        let dealerobjs = Array.from(retobj.dealer);
+        setDealer(dealerobjs[0]);
+      }
+    };
   
+    fetchDealer();
+  }, [dealer_url]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -73,10 +85,7 @@ const Dealer = () => {
     <div style={{ margin: "20px" }}>
       <Header />
       <div style={{ marginTop: "10px" }}>
-        <h1 style={{ color: "grey" }}>
-          {dealer?.full_name || 'N/A'}
-          {postReview}
-        </h1>
+      <h1 style={{ color: "grey" }}>{dealer?.full_name || 'N/A'} {postReview}</h1>
         <h4 style={{ color: "grey" }}>
           {dealer?.city || 'N/A'},
           {dealer?.address || 'N/A'},
