@@ -1,13 +1,16 @@
 # Uncomment the imports below before you add the function code
-import requests  # type: ignore
+import requests  
 import os
-from dotenv import load_dotenv  # type: ignore
+from dotenv import load_dotenv  
 
 load_dotenv()
 
 backend_url = os.getenv('backend_url', default="http://localhost:3030")
 sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url', default="http://localhost:5050/")
+searchcars_url = os.getenv(
+    'searchcars_url',
+    default="http://localhost:3050/")
 
 
 # Add code for get requests to back end
@@ -50,3 +53,24 @@ def post_review(data_dict):
         return response.json()
     except Exception as e:
         print("Network exception occurred:", e)
+        
+        
+def searchcars_request(endpoint, **kwargs):
+    params = ""
+    if (kwargs):
+        for key, value in kwargs.items():
+            params = params+key + "=" + value + "&"
+
+    request_url = searchcars_url+endpoint+"?"+params
+
+    print("GET from {} ".format(request_url))
+    try:
+        # Call get method of requests library with URL and parameters
+        response = requests.get(request_url)
+        return response.json()
+    except:
+        # If any error occurs
+        print("Network exception occurred")
+    finally:
+        print("GET request call complete!")
+        

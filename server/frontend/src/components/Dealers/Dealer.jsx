@@ -93,6 +93,7 @@ const Dealer = () => {
           {dealer?.state || 'N/A'}
         </h4>
       </div>
+      <a href={`/searchcars/${id}`}>SearchCars</a>	
       <div className="reviews_panel">
         {reviews.length === 0 && unreviewed === false ? (
           <text>Loading Reviews....</text>
