@@ -7,30 +7,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
-      background-color: #DFDE9F;
-      color: #1C1CA0;
+      background-color: #FFFFFF;
+      color: #145858;
     }
 
     .navbar {
-      background-color: #8AD167;
+      background-color: #145858;
     }
 
     .nav-link {
-      color: #1C1CA0;
+      color: #FFFFFF;
+    }
+
+    .nav-link:hover {
+      color: #F7B318;
     }
 
     .banner {
-      background-image: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: white;
+      background-image: linear-gradient(to right, #145858, #C8E0CA);
+      color: #FFFFFF;
       padding: 3rem;
       text-align: center;
     }
 
     .contact-card {
-      background-color: #f8f9fa;
+      background-color: #C8E0CA;
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .contact-form h2 {
@@ -43,16 +53,33 @@
     }
 
     .contact-form .btn-primary {
-      background-color: #1C1CA0;
-      border-color: #1C1CA0;
+      background-color: #145858;
+      border-color: #145858;
       border-radius: 0;
       padding: 0.5rem 2rem;
       transition: all 0.3s ease-in-out;
     }
 
     .contact-form .btn-primary:hover {
-      background-color: #8AD167;
-      border-color: #8AD167;
+      background-color: #C8E0CA;
+      border-color: #C8E0CA;
+      color: #145858;
+    }
+
+    .footer {
+      background-color: #145858;
+      color: #FFFFFF;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #C8E0CA;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .footer a:hover {
+      color: #F7B318;
     }
   </style>
 </head>
@@ -81,6 +108,7 @@
       </div>
     </div>
   </nav>
+
   <div class="banner">
     <h1>Contact Us</h1>
     <p>Get in touch with us for all your automotive needs.</p>
@@ -92,7 +120,7 @@
         <div class="contact-card mb-4">
           <div class="row">
             <div class="col-md-4 text-center">
-              <i class="fas fa-car fa-5x text-primary"></i>
+              <i class="fas fa-car fa-5x" style="color: #145858;"></i>
             </div>
             <div class="col-md-8">
               <h4>Best Cars Dealership</h4>
@@ -123,5 +151,15 @@
       </div>
     </div>
   </div>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Best Cars Dealership. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>

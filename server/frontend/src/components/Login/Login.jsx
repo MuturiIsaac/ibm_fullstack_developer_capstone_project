@@ -16,7 +16,10 @@ const Login = ({ onClose }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "userName": userName, "password": password }),
+      body: JSON.stringify({
+        "userName": userName,
+        "password": password
+      }),
     });
     const json = await res.json();
     if (json.status !== null && json.status === "Authenticated") {
@@ -36,13 +39,13 @@ const Login = ({ onClose }) => {
       <Header />
       <div onClick={onClose}>
         <div onClick={(e) => { e.stopPropagation(); }} className='modalContainer'>
-          <div className="banner py-2">
-            <h1 className="mb-0">Login</h1>
-          </div>
           <div className="container my-4">
             <div className="row justify-content-center">
               <div className="col-md-6">
                 <div className="card">
+                  <div className="banner py-2" style={{ backgroundColor: '#145858' }}>
+                   <h1 className="mb-0" style={{ color: '#FFFFFF' }}>Login</h1>
+                  </div>
                   <div className="card-body">
                     <form className="login_panel" style={{}} onSubmit={login}>
                       <div className="mb-3">
@@ -55,10 +58,10 @@ const Login = ({ onClose }) => {
                       </div>
                       <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <div className="d-flex">
-                          <input className="btn btn-primary me-2" type="submit" value="Login" />
-                          <input className="btn btn-secondary" type="button" value="Cancel" onClick={() => setOpen(false)} />
+                          <input className="btn" style={{ backgroundColor: '#145858', color: '#FFFFFF' }} type="submit" value="Login" />
+                          <input className="btn btn-secondary ms-2" type="button" value="Cancel" onClick={() => setOpen(false)} />
                         </div>
-                        <a className="loginlink mt-3 mt-md-0" href="/register">Register Now</a>
+                        <a className="loginlink mt-3 mt-md-0" href="/register" style={{ color: '#C8E0CA' }}>Register Now</a>
                       </div>
                     </form>
                   </div>

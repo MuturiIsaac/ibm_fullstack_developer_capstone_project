@@ -9,20 +9,24 @@
   <link rel="stylesheet" href="static/style.css">
   <style>
     body {
-      background-color: #DFDE9F;
-      color: #1C1CA0;
+      background-color: #FFFFFF;
+      color: #145858;
     }
 
     .navbar {
-      background-color: #8AD167;
+      background-color: #145858;
     }
 
     .nav-link {
-      color: #1C1CA0;
+      color: #C8E0CA;
+    }
+
+    .nav-link:hover {
+      color: #F7B318;
     }
 
     .banner {
-      background-image: linear-gradient(to right, #1C1CA0, #8AD167);
+      background-image: linear-gradient(to right, #145858, #C8E0CA);
       color: #FFFFFF;
       padding: 3rem;
       text-align: center;
@@ -40,18 +44,19 @@
     }
 
     .btn-primary {
-      background-color: #1C1CA0;
-      border-color: #1C1CA0;
+      background-color: #145858;
+      border-color: #145858;
       transition: all 0.3s ease-in-out;
     }
 
     .btn-primary:hover {
-      background-color: #8AD167;
-      border-color: #8AD167;
+      background-color: #C8E0CA;
+      border-color: #C8E0CA;
+      color: #145858;
     }
 
     .homepage_links {
-      color: #FFFFFF;
+      color: #C8E0CA;
       text-decoration: none;
       margin: 0 0.5rem;
       padding: 0.5rem 1rem;
@@ -60,8 +65,28 @@
     }
 
     .homepage_links:hover {
-      background-color: #1C1CA0;
-      box-shadow: 0 0 10px rgba(28, 28, 160, 0.5);
+      background-color: #F7B318;
+      color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(247, 179, 24, 0.5);
+    }
+
+    .feature-card {
+      background-color: #C8E0CA;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #145858;
+      margin-bottom: 1rem;
     }
 
     @media (max-width: 767px) {
@@ -167,6 +192,68 @@
             <h5 class="card-title">Explore Our Dealerships</h5>
             <p class="card-text mb-4">Browse through our wide selection of vehicles from top brands.</p>
             <a href="/dealers" class="btn btn-primary btn-lg">View Dealerships</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5">
+    <h2 class="text-center mb-5">Our Features</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="feature-card text-center">
+          <i class="fas fa-car feature-icon"></i>
+          <h5>Wide Selection</h5>
+          <p>We offer a diverse range of vehicles from various brands and models to cater to every preference and budget.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card text-center">
+          <i class="fas fa-shield-alt feature-icon"></i>
+          <h5>Quality Assurance</h5>
+          <p>All our vehicles undergo thorough inspections and servicing to ensure they meet the highest quality standards.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-card text-center">
+          <i class="fas fa-user-tie feature-icon"></i>
+          <h5>Expert Support</h5>
+          <p>Our team of knowledgeable professionals is dedicated to providing exceptional customer service and guidance throughout the buying process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container my-5">
+    <h2 class="text-center mb-5">Featured Vehicles</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/car1.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">2022 Sedan</h5>
+            <p class="card-text">This sleek and stylish sedan offers a perfect blend of performance and comfort.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/car2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">2021 SUV</h5>
+            <p class="card-text">Designed for adventure, this rugged SUV is perfect for exploring the great outdoors.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/car3.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">2023 Sports Car</h5>
+            <p class="card-text">Experience the thrill of driving with this high-performance sports car.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
