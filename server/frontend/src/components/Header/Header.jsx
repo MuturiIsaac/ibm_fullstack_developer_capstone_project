@@ -50,19 +50,6 @@ const Header = () => {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul className="navbar-nav navitems">
-              <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/" style={{ color: '#C8E0CA' }}>Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about" style={{ color: '#C8E0CA' }}>About Us</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contact" style={{ color: '#C8E0CA' }}>Contact Us</a>
-              </li>
-            </ul>
-          </div>
           <span className="navbar-text">
             <div className="loginlink" id="loginlogout">
               {home_page_items}
