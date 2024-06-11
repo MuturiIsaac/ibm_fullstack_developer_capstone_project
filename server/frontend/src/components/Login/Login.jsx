@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import "./Login.css";
+import "../assets/bootstrap/css/bootstrap.min.css";
 import Header from '../Header/Header';
+import loginIllustration from "../assets/login.svg";
 
-const Login = ({ onClose }) => {
+const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(true);
 
-  let login_url = window.location.origin + "/djangoapp/login";
+  const login_url = `${window.location.origin}/djangoapp/login`;
 
   const login = async (e) => {
     e.preventDefault();
@@ -16,11 +17,9 @@ const Login = ({ onClose }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        "userName": userName,
-        "password": password
-      }),
+      body: JSON.stringify({ userName, password }),
     });
+
     const json = await res.json();
     if (json.status !== null && json.status === "Authenticated") {
       sessionStorage.setItem('username', json.userName);
@@ -37,42 +36,50 @@ const Login = ({ onClose }) => {
   return (
     <div>
       <Header />
-      <div onClick={onClose}>
-        <div onClick={(e) => { e.stopPropagation(); }} className='modalContainer'>
-          <div className="container my-4">
-            <div className="row justify-content-center">
-              <div className="col-md-6">
-                <div className="card">
-                  <div className="banner py-2" style={{ backgroundColor: '#145858' }}>
-                   <h1 className="mb-0" style={{ color: '#FFFFFF' }}>Login</h1>
-                  </div>
-                  <div className="card-body">
-                    <form className="login_panel" style={{}} onSubmit={login}>
-                      <div className="mb-3">
-                        <label htmlFor="username" className="form-label">Username</label>
-                        <input type="text" name="username" placeholder="Username" className="form-control" onChange={(e) => setUserName(e.target.value)} />
-                      </div>
-                      <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input name="psw" type="password" placeholder="Password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
-                      </div>
-                      <div className="d-flex justify-content-between align-items-center flex-wrap">
-                        <div className="d-flex">
-                          <input className="btn" style={{ backgroundColor: '#145858', color: '#FFFFFF' }} type="submit" value="Login" />
-                          <input className="btn btn-secondary ms-2" type="button" value="Cancel" onClick={() => setOpen(false)} />
-                        </div>
-                        <a className="loginlink mt-3 mt-md-0" href="/register" style={{ color: '#C8E0CA' }}>Register Now</a>
-                      </div>
-                    </form>
-                  </div>
+      <section className="py-4 py-md-5 my-5" style={{ paddingTop: '100px' }}>
+        <div className="container py-md-5">
+          <div className="row">
+            <div className="col-md-6 text-center">
+              <img className="img-fluid w-100" src={loginIllustration} alt="Login Illustration" />
+            </div>
+            <div className="col-md-5 col-xl-4 text-center text-md-start">
+              <h2 className="display-6 fw-bold mb-5">
+                <span className="underline pb-1"><strong>Login</strong></span>
+              </h2>
+              <form onSubmit={login}>
+                <div className="mb-3">
+                  <input 
+                    className="shadow form-control" 
+                    type="text" 
+                    name="userName" 
+                    placeholder="Username" 
+                    value={userName} 
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
                 </div>
-              </div>
+                <div className="mb-3">
+                  <input 
+                    className="shadow form-control" 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)}  
+                  />
+                </div>
+                <div className="mb-5">
+                  <button className="btn btn-primary shadow" type="submit">Log in</button>
+                </div>
+              </form>
+              <p className="text-muted">
+                <a href="/forgotten-password">Forgot your password?</a>
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
-};
+}
 
 export default Login;
